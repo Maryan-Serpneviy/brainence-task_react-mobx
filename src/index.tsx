@@ -11,7 +11,7 @@ import './index.scss'
 
 function App() {
     return (
-        <DndProvider backend={isMobile ? touchBackend : html5Backend}>
+        <DndProvider backend={html5Backend}>
             <Provider store={store}>
                 <div className="App">
                     <Products />
@@ -20,6 +20,5 @@ function App() {
         </DndProvider>
     )
 }
-
 
 ReactDOM.render(<App />, document.querySelector('#root'))

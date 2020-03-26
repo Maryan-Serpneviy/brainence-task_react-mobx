@@ -15,7 +15,7 @@ type Props = {
 const ProductCards: React.FC<Props> = (
    { handleDelete, handleDnd, store: { products: { items } } }
    : InferProps<typeof ProductCards.propTypes>) => {
-   
+
    const moveItem = useCallback(
       (dragIndex: number, hoverIndex: number) => {
          const dragItem = items[dragIndex]

@@ -8,7 +8,7 @@ abstract class AbstractProducts {
     getProducts: () => Array<ProductType>
 }
 
-export default class ProductsStore extends AbstractProducts {
+export default class extends AbstractProducts {
     constructor(private rootStore: AbstractRootStore) {
         super()
         this.storage = rootStore.storage
@@ -16,6 +16,7 @@ export default class ProductsStore extends AbstractProducts {
     }
 
     @observable items: Array<ProductType> | [] = []
+    pinned: boolean = false
 
     private cached: Array<ProductType> | [] = []
     private matched: Array<ProductType> | [] = []
@@ -62,6 +63,11 @@ export default class ProductsStore extends AbstractProducts {
     @action pin = (id: number): void => {
         const pinned = this.items.find(el => el.id === id)
         const pinnedIndex = this.items.indexOf(pinned)
+        this.items.forEach(item => {
+            item.isPinned = false
+        })
+        pinned.isPinned = true
+
         const newItems = [...this.items]
         newItems.splice(pinnedIndex, 1)
         newItems.unshift(pinned)

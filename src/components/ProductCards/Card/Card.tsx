@@ -56,10 +56,10 @@ const ProductCard: React.FC<Props> = (
    drag(drop(ref))
 
    const cardStyles = [classes.card]
-   if (index === 0) {
+   if (product.isPinned) {
       cardStyles.push(classes.pinned)
    }
-
+   
    return (
       <Card key={product.id} ref={ref} className={cardStyles.join(' ')} style={{ width: '17.5rem', opacity }}>
          <Card.Img variant="top" src={product.image} />
@@ -71,9 +71,9 @@ const ProductCard: React.FC<Props> = (
             <Button
                id={`pin-${product.id}`}
                onClick={() => pin(product.id)}
-               disabled={index === 0}
+               disabled={product.isPinned}
             >
-               {index === 0 ? 'Pinned' : 'Pin'}
+               {product.isPinned ? 'Pinned' : 'Pin'}
             </Button>
 
             <Button id={`del-${product.id}`} style={{ float: 'right' }} onClick={handleDelete} variant="danger">
