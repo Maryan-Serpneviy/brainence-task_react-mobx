@@ -61,12 +61,10 @@ export default class extends Component {
                         handleDelete={this.deleteItem}
                     />}
 
-                    React.useMemo(() => (
-                        <ProductCards
-                            handleDelete={this.handleDelete}
-                            handleDnd={(newItems: object[]): void => this.store.dragAndDrop(newItems)}
-                        />
-                    ))
+                    <ProductCards
+                        handleDelete={this.handleDelete}
+                        handleDnd={(newItems: object[]): void => this.store.dragAndDrop(newItems)}
+                    />
                 </section>
             </>
         )
