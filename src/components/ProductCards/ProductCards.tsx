@@ -48,7 +48,8 @@ const ProductCards: React.FC<Props> = (
 }
 
 ProductCards.propTypes = {
-   handleDelete: PropTypes.func.isRequired
+   handleDelete: PropTypes.func.isRequired,
+   handleDnd: PropTypes.func
 }
 
 export default withStore(ProductCards)
