@@ -8,7 +8,7 @@ import ModalAdd from '~cm/ModalAdd'
 import ModalRemove from '~cm/ModalRemove'
 import { ProductType } from '@/api/products'
 
-interface Store {
+type Store = {
     loadItems: () => void
     items: Array<ProductType>
     currId: number | null
@@ -22,7 +22,7 @@ interface Store {
 @withStore
 export default class extends Component {
     private store: Store = this.props.store.products
-    private state = {
+    readonly state = {
         showDelete: false,
         showAdd: false
     }
